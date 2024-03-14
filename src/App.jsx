@@ -1,11 +1,15 @@
 import Player from "./components/PLayer.jsx";   //This is the bug of vs code where PLayer is same as Player component
 import GameBoard from "./components/GameBoard.jsx";
+import Log from "./components/Log.jsx";
 import { useState } from "react";
+
 function App() {
+  const [gameTurns , setGameTurns] = useState([]);
   const [activePlayer , setActivePlayer] = useState('X');
 
   function handleSelectSquare() {
     setActivePlayer((currActivePlayer) => currActivePlayer === 'X' ? 'O' : 'X');
+    setGameTurns();
   }
   
   return (
@@ -20,7 +24,7 @@ function App() {
         <GameBoard onSelectSquare={handleSelectSquare} activePlayerSymbol={activePlayer}/>
       </div>
       {/*Logs*/}
-      LOGS
+      <Log />
     </main>
   );
 }
