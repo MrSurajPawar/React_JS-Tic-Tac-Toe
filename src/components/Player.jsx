@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({
+  initialName,
+  symbol,
+  isActive,
+  onChangeName,
+}) {
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -11,6 +16,9 @@ export default function Player({ initialName, symbol, isActive }) {
   function handleEditClick() {
     // setIsEditing(!isEditing);  not good practice
     setIsEditing((editing) => !editing);
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
   }
 
   //false condition ; we can assign jsx code to variable
